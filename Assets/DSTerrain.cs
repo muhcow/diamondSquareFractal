@@ -10,13 +10,15 @@ public class DSTerrain : MonoBehaviour
 
     public Shader shader;
 
-    Vector3[] nverts;
+    public Vector3[] nverts;
     int nvertcount;
 
     public GameObject sun;
     public GameObject camera;
     public Renderer renderer;
     public PointLight pointLight;
+
+    public float totalHeight;
 
     // Start is called before the first frame update
     void Start()
@@ -114,19 +116,10 @@ public class DSTerrain : MonoBehaviour
         Color[] colourArray = new Color[nverts.Length];
 
         //calculate relative color heights based off max and min hieght of map
-        float totalHeight = findMaxHeight(nverts) - findMinHeight(nverts);
+        totalHeight = findMaxHeight(nverts) - findMinHeight(nverts);
         float snowHeight = 0.9f * totalHeight + findMinHeight(nverts);
         float dirtHeight = 0.6f * totalHeight + findMinHeight(nverts);
-        float grassHeight = 0.5f * totalHeight + findMinHeight(nverts);
-
-        print(snowHeight);
-        print(dirtHeight);
-        print(grassHeight);
-        print(totalHeight);
-        print(findMaxHeight(nverts));
-        print(findMinHeight(nverts));
-
-
+        float grassHeight = 0.4f * totalHeight + findMinHeight(nverts);
 
         for (int h=0;h< nverts.Length; h++)
         {
@@ -145,7 +138,7 @@ public class DSTerrain : MonoBehaviour
             }
             else if (nverts[h].y < grassHeight)
             {
-                colourArray[h] = new Vector4(0.96863f, 0.9451f, 0.7451f, 1); ;
+                colourArray[h] = new Vector4(0.96863f, 0.9451f, 0.6451f, 1); ;
             }
         }
 
@@ -175,7 +168,7 @@ public class DSTerrain : MonoBehaviour
 
     }
 
-    float findMaxHeight (Vector3[] verts) {
+    public float findMaxHeight (Vector3[] verts) {
 
         float maxHeight = float.MinValue;
 
@@ -187,7 +180,7 @@ public class DSTerrain : MonoBehaviour
         return maxHeight;
     }
 
-    float findMinHeight(Vector3[] verts)
+    public float findMinHeight(Vector3[] verts)
     {
 
         float minHeight = float.MaxValue;
