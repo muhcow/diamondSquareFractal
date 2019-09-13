@@ -6,11 +6,15 @@ public class FlyCamera : MonoBehaviour
 {
     public float speed;
     public float angularSpeed;
+    private float dy = 10f;
+    public Rigidbody rigidbody;
+    public GameObject terrainObj;
     // Start is called before the first frame update
     void Start()
     {
         // Lock the cursor to allow mouse look, press esc to get out of scene and use cursor normally
         Cursor.lockState = CursorLockMode.Locked;
+        transform.position = new Vector3(0, 20, 0);
     }
 
     // Update is called once per frame
@@ -56,5 +60,42 @@ public class FlyCamera : MonoBehaviour
         }
 
         transform.rotation *= delta;
+        Bound();
+        rigidbody.velocity = new Vector3(0, 0, 0);
+    }
+
+    private void Bound()
+    {
+        DSTerrain terrain = terrainObj.GetComponent<DSTerrain>();
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        float terrainWidth = terrain.findWidth(terrain.nverts)*0.7f;
+        float terrainHighPoint = terrain.findMaxHeight(terrain.nverts);
+
+        // Keep the camera inside the terrain's bounds
+        if (newPos.x > terrainWidth - dy)
+        {
+            newPos.x = terrainWidth - dy;
+        }
+        if (newPos.x < -terrainWidth + dy)
+        {
+            newPos.x = -terrainWidth + dy;
+        }
+        if (newPos.z > terrainWidth - dy)
+        {
+            newPos.z = terrainWidth - dy;
+        }
+        if (newPos.z < -terrainWidth + dy)
+        {
+            newPos.z = -terrainWidth + dy;
+        }
+        if (newPos.y > 3*terrainHighPoint - dy)
+               {
+                   newPos.y = 3*terrainHighPoint- dy;
+               }
+
+        transform.position = newPos;
+
+
     }
 }
