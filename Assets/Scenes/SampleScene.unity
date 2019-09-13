@@ -271,7 +271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af76ebf2e736b4af7b4a4440a13f0f6c, type: 2}
+  - {fileID: 2100000, guid: c9724ad5514574ef1aa8aab23343f970, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -326,6 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 101067885}
+  renderer: {fileID: 0}
+  pointLight: {fileID: 645899783}
 --- !u!1 &645899780
 GameObject:
   m_ObjectHideFlags: 0

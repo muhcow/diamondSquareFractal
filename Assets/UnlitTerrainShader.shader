@@ -64,15 +64,15 @@
 				}              
 				if (SnowHeight > v.vertex.y > DirtHeight) {
 					// brown
-					col = float4(0.57254, 0.38431, 0.22353, 1);
+					col = float4(0.57, 0.38, 0.22, 1);
 				}
 				if (DirtHeight > v.vertex.y > GrassHeight) {
 					// green
-					col = float4(0.09804, 0.54902, 0.09804, 1);
+					col = float4(0.1, 0.54, 0.1, 1);
 				}
 				if (GrassHeight > v.vertex.y){
 					// yellow
-					col = float4(0.96863, 0.9451, 0.7451, 1);
+					col = float4(0.95, 0.95, 0.75, 1);
 				}
                 
                 

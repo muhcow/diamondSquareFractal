@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMat
-  m_Shader: {fileID: 4800000, guid: bf3588db77a224db1b10afeec0effd78, type: 3}
+  m_Shader: {fileID: 4800000, guid: 50f626a07558d47bd8152d572410bbf1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -56,8 +56,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Amplitude: 0.73723
-    - Frequency: 0.9
+    - Amplitude: 0.1
+    - Frequency: 50
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -75,5 +75,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.66363716, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.9148698, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PointLightColor: {r: 0.9980618, g: 1, b: 0.8254717, a: 1}
+    - _PointLightPosition: {r: 0, g: 0, b: 0, a: 1}

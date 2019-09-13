@@ -19,6 +19,7 @@ public class DSTerrain : MonoBehaviour
     public PointLight pointLight;
 
     public float totalHeight;
+    public float totalWidth;
 
     // Start is called before the first frame update
     void Start()
@@ -146,6 +147,8 @@ public class DSTerrain : MonoBehaviour
 
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
+        MeshCollider meshC = gameObject.AddComponent(typeof(MeshCollider)) as MeshCollider;
+        meshC.sharedMesh = mesh;
     }
 
     void DiamondSquare (int row, int col, int size, float offset)
@@ -193,6 +196,28 @@ public class DSTerrain : MonoBehaviour
             }
         }
         return minHeight;
+    }
+
+    public float findWidth(Vector3[] verts)
+    {
+
+        float maxWidth = float.MinValue;
+        float minWidth = float.MaxValue;
+
+        for (int i = 0; i < verts.Length; i++)
+        {
+            //find max width
+            if (verts[i].y > maxWidth)
+            {
+                maxWidth = verts[i].x;
+            }
+            //find min width
+            if (verts[i].y < minWidth)
+            {
+                minWidth = verts[i].x;
+            }
+        }
+        return maxWidth - minWidth;
     }
 
 }
